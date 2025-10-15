@@ -219,7 +219,7 @@
       formData.append("file", compressedBlob, file.name);
 
       try {
-        const res = await fetch(`${API_BASE}/detect2`, { method: "POST", body: formData });
+        const res = await fetch(`${API_BASE}/detect`, { method: "POST", body: formData });
         const data = await res.json();
         loader.classList.add("hidden");
         fileInput.style.display = "block";
@@ -250,6 +250,7 @@
 
 </body>
 </html>
+
 
 
 
