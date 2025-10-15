@@ -3,140 +3,250 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Detect Image</title>
-  <link rel="stylesheet" href="css/style.css">
-
-
+  <title>AI Object Detection</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<body class="bg-orange-50 text-gray-800 font-sans">
 
-<body>
-  <!-- Status Bar -->
-  <div id="statusBar" class="offline">Checking server status...</div>
+  <!-- Header / Navbar -->
+  <header class="relative w-full">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-md shadow-md">
+      <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+        <h1 class="text-xl font-bold text-orange-500">AI Object Detection</h1>
+        <ul class="flex gap-6 font-semibold text-gray-700">
+          <li><a href="#about" class="hover:text-orange-500 transition">About</a></li>
+          <li><a href="#team" class="hover:text-orange-500 transition">Our Team</a></li>
+        </ul>
+      </div>
+    </nav>
 
-  <h1>Image Detection</h1>
+    <!-- Banner Image -->
+    <div class="relative w-full h-80 md:h-96 lg:h-[500px] mt-16">
+      <img src="facial_recognition_928404.jpg" 
+           alt="AI Banner" 
+           class="w-full h-full object-cover">
 
-  <form id="uploadForm">
-    <input type="file" id="fileInput" accept="image/*" required />
-    <button type="submit" disabled>Detect Images</button>
-  </form>
+      <!-- Overlay with Text -->
+      <div class="absolute inset-0 flex flex-col justify-center items-center p-4 text-white text-center">
+        <div class="bg-black/25 p-6 rounded-lg max-w-md">
+          <h1 class="text-3xl md:text-4xl font-bold mb-2">AI Image Detection</h1>
+          <p class="text-lg md:text-xl mb-4">Upload an image — let AI detect objects for you.</p>
+          <a href="#uploadForm" class="inline-block px-6 py-3 bg-white text-orange-500 font-semibold rounded-lg hover:bg-orange-100 transition">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-  <div id="loader">Processing...</div>
+  <!-- About Section -->
+  <section id="about" class="max-w-3xl mx-auto mt-12 text-center px-4">
+    <h2 class="text-2xl font-bold text-orange-500 mb-4">About</h2>
+    <p class="text-lg text-gray-800">
+      This AI-powered web app can identify multiple objects in an image using deep learning techniques. 
+      Upload your image and let the AI analyze it with precision and accuracy.
+    </p>
+  </section>
 
-  <div id="canvasContainer">
-    <img id="uploadedImage" style="display:none;" />
-    <canvas id="canvas"></canvas>
+  <!-- Server Status -->
+  <div class="flex justify-center mt-5">
+    <div id="statusBar" class="flex items-center gap-2 px-4 py-2 rounded-full font-semibold bg-gray-100 text-gray-800 shadow-md">
+      <span id="statusIcon" class="text-xl">✖</span>
+      <span id="statusText">Checking server status...</span>
+    </div>
   </div>
 
+  <!-- Upload Form -->
+  <section id="uploadForm" class="mt-8 flex flex-col items-center gap-5 px-4">
+    <form id="uploadFormInner" class="w-full max-w-md flex flex-col gap-4 items-center">
+      <input type="file" id="fileInput" accept="image/*" class="border-2 border-orange-500 rounded-lg p-2 w-full cursor-pointer bg-white" required />
+      <button id="detectBtn" type="submit" class="bg-orange-500 text-white w-full py-3 rounded-lg hover:bg-orange-400 transition disabled:opacity-50" disabled>Detect Objects</button>
+    </form>
+
+    <div id="loader" class="flex flex-col items-center gap-2 mt-5 hidden">
+      <div class="border-4 border-orange-200 border-t-orange-500 rounded-full w-12 h-12 animate-spin"></div>
+      <p class="text-orange-600 font-semibold">Detecting objects...</p>
+    </div>
+  </section>
+
+  <!-- Canvas for preview & detection -->
+  <div id="canvasContainer" class="mt-8 flex justify-center px-4 w-full">
+    <canvas id="canvas" class="rounded-lg shadow-lg w-full max-w-full"></canvas>
+    <img id="uploadedImage" class="hidden" />
+  </div>
+
+  <!-- Results Table -->
+  <table id="resultsTable" class="mt-8 mx-auto w-full max-w-md text-left table-auto border-collapse shadow-lg rounded-lg overflow-hidden hidden">
+    <thead class="bg-orange-500 text-white">
+      <tr>
+        <th class="px-4 py-2">Object</th>
+        <th class="px-4 py-2">Percentage</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white"></tbody>
+  </table>
+
+  <!-- Our Team Section -->
+  <section id="team" class="mt-12 p-6 max-w-5xl mx-auto bg-white rounded-xl shadow-lg">
+    <h2 class="text-2xl font-bold text-orange-500 mb-6 text-center">Our Team</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 justify-items-center">
+      <div class="member bg-orange-50 rounded-xl p-4 shadow-lg text-center">
+        <h4 class="text-orange-500 font-bold">Anshika verma</h4>
+        <p>Roll no: 2407191530010</p>
+        <p>Semester: 3 | Section: E</p>
+      </div>
+      <div class="member bg-orange-50 rounded-xl p-4 shadow-lg text-center">
+        <h4 class="text-orange-500 font-bold">Ayushi Gupta</h4>
+        <p>Roll no: 2407191530020 </p>
+        <p>Semester: 3 | Section: E</p>
+      </div>
+      <div class="member bg-orange-50 rounded-xl p-4 shadow-lg text-center">
+        <h4 class="text-orange-500 font-bold">Diksha singh</h4>
+        <p>Roll no: 2407191530023</p>
+        <p>Semester: 3 | Section: E</p>
+      </div>
+      <div class="member bg-orange-50 rounded-xl p-4 shadow-lg text-center">
+        <h4 class="text-orange-500 font-bold">Priya Gaurav</h4>
+        <p>Roll no: 2407191530046</p>
+        <p> Semester: 3 | Section: E</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Future Scope -->
+  <section class="mt-12 p-6 max-w-3xl mx-auto bg-white rounded-xl shadow-lg">
+    <h2 class="text-2xl font-bold text-orange-500 mb-4 text-center">Future Scope</h2>
+    <p class="text-center">In the future, this project can be expanded to perform real-time object detection through live camera feed integration, allowing dynamic analysis in video streams and surveillance systems.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mt-12 bg-orange-500 text-white p-6 text-center rounded-t-xl shadow-inner">
+    <p>© 2025 AI Object Detection Project | Built with ❤️ by Team 404 Not Found</p>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 bg-orange-500 text-white px-6 py-3 rounded-xl shadow-lg hidden"></div>
+
+  <!-- JS -->
   <script>
     const API_BASE = "https://mini-project-api.onrender.com";
-    const STATUS_INTERVAL = 15*3000; // ping every 3 seconds
+    const STATUS_INTERVAL = 15* 3000;
 
     const statusBar = document.getElementById("statusBar");
-    const form = document.getElementById("uploadForm");
-    const button = form.querySelector("button");
+    const statusIcon = document.getElementById("statusIcon");
+    const statusText = document.getElementById("statusText");
+    const form = document.getElementById("uploadFormInner");
+    const fileInput = document.getElementById("fileInput");
+    const detectBtn = document.getElementById("detectBtn");
     const loader = document.getElementById("loader");
     const uploadedImage = document.getElementById("uploadedImage");
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
+    const table = document.getElementById("resultsTable");
+    const tbody = table.querySelector("tbody");
+    const toast = document.getElementById("toast");
 
-    // === SERVER STATUS CHECK ===
     async function checkServerStatus() {
       try {
-        const res = await fetch(`${API_BASE}/ping`, { method: "GET" });
+        const res = await fetch(`${API_BASE}/ping`);
         if (!res.ok) throw new Error("Ping failed");
-
-        statusBar.textContent = "✅ Server Online";
-        statusBar.classList.remove("offline");
-        statusBar.classList.add("online");
-        button.disabled = false;
+        statusIcon.textContent = "✔";
+        statusBar.className = "flex items-center gap-2 px-4 py-2 rounded-full font-semibold bg-green-100 text-green-800 shadow-md";
+        statusText.textContent = "Server Online";
+        detectBtn.disabled = false;
       } catch {
-        statusBar.textContent = "❌ Server Offline — waiting to reconnect...";
-        statusBar.classList.remove("online");
-        statusBar.classList.add("offline");
-        button.disabled = true;
+        statusIcon.textContent = "✖";
+        statusBar.className = "flex items-center gap-2 px-4 py-2 rounded-full font-semibold bg-red-100 text-red-600 shadow-md";
+        statusText.textContent = "Server Offline — retrying...";
+        detectBtn.disabled = true;
       }
     }
-
-    // Start checking status repeatedly
     checkServerStatus();
     setInterval(checkServerStatus, STATUS_INTERVAL);
 
-    // === IMAGE UPLOAD + DETECTION ===
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.remove("hidden");
+      setTimeout(() => toast.classList.add("hidden"), 3000);
+    }
+
+    function resizeCanvasToFit(canvas, img) {
+      const containerWidth = canvas.parentElement.clientWidth;
+      const scale = Math.min(containerWidth / img.width, 1);
+      canvas.width = img.width * scale;
+      canvas.height = img.height * scale;
+      return scale;
+    }
+
+    async function compressImage(file, maxWidth = 850, quality = 0.7) {
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
+      await new Promise(r => img.onload = r);
+
+      const scale = Math.min(maxWidth / img.width, 1);
+      const canvasCompress = document.createElement('canvas');
+      canvasCompress.width = img.width * scale;
+      canvasCompress.height = img.height * scale;
+      const ctxCompress = canvasCompress.getContext('2d');
+      ctxCompress.drawImage(img, 0, 0, canvasCompress.width, canvasCompress.height);
+
+      return new Promise(resolve => {
+        canvasCompress.toBlob(blob => resolve(blob), 'image/jpeg', quality);
+      });
+    }
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
+      const file = fileInput.files[0];
+      if (!file) return showToast("Please select an image first.");
 
-      const file = document.getElementById("fileInput").files[0];
-      if (!file) return alert("Please select an image.");
-
-      const imageUrl = URL.createObjectURL(file);
-      uploadedImage.src = imageUrl;
-      uploadedImage.style.display = "block";
-
-      await new Promise((resolve) => (uploadedImage.onload = resolve));
-
-      const displayedWidth = uploadedImage.clientWidth;
-      const displayedHeight = uploadedImage.clientHeight;
-      canvas.width = displayedWidth;
-      canvas.height = displayedHeight;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      table.style.display = "none";
+      tbody.innerHTML = "";
 
-      loader.style.display = "block";
+      const compressedBlob = await compressImage(file);
+      const compressedImgURL = URL.createObjectURL(compressedBlob);
+      uploadedImage.src = compressedImgURL;
+      await new Promise(r => uploadedImage.onload = r);
+
+      const scale = resizeCanvasToFit(canvas, uploadedImage);
+      ctx.drawImage(uploadedImage, 0, 0, uploadedImage.width * scale, uploadedImage.height * scale);
+      canvas.style.display = "block";
+
+      fileInput.style.display = "none";
+      detectBtn.disabled = true;
+      loader.classList.remove("hidden");
 
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append("file", compressedBlob, file.name);
 
       try {
-        const response = await fetch(`${API_BASE}/detect`, {
-          method: "POST",
-          body: formData,
+        const res = await fetch(`${API_BASE}/detect`, { method: "POST", body: formData });
+        const data = await res.json();
+        loader.classList.add("hidden");
+        fileInput.style.display = "block";
+        detectBtn.disabled = false;
+
+        data.detections.forEach(det => {
+          const [x1, y1, x2, y2] = det.box;
+          ctx.strokeStyle = "#ff7b01";
+          ctx.lineWidth = 2;
+          ctx.strokeRect(x1 * scale, y1 * scale, (x2 - x1) * scale, (y2 - y1) * scale);
+          ctx.fillStyle = "#ff7b01";
+          ctx.font = "14px Poppins";
+          ctx.fillText(`${det.class} ${(det.confidence*100).toFixed(1)}%`, x1 * scale + 4, y1 * scale + 14);
+
+          const row = document.createElement("tr");
+          row.innerHTML = `<td class="px-4 py-2">${det.class}</td><td class="px-4 py-2">${(det.confidence*100).toFixed(2)}%</td>`;
+          tbody.appendChild(row);
         });
-
-        if (!response.ok) {
-          const text = await response.text();
-          throw new Error(`Server Error: ${text}`);
-        }
-
-        const data = await response.json();
-        loader.style.display = "none";
-
-        if (!data.detections || data.detections.length === 0) {
-          alert("No objects detected!");
-          return;
-        }
-
-        const naturalWidth = uploadedImage.naturalWidth;
-        const naturalHeight = uploadedImage.naturalHeight;
-        const scaleX = displayedWidth / naturalWidth;
-        const scaleY = displayedHeight / naturalHeight;
-
-        ctx.lineWidth = 2;
-        ctx.font = "16px Arial";
-        ctx.textBaseline = "top";
-
-        data.detections.forEach((det) => {
-          const [x1, y1, x2, y2] = det.box.map((coord, i) =>
-            i % 2 === 0 ? coord * scaleX : coord * scaleY
-          );
-
-          const color = "#00FF00";
-          ctx.strokeStyle = color;
-          ctx.fillStyle = color;
-
-          ctx.strokeRect(x1, y1, x2 - x1, y2 - y1);
-
-          const label = `${det.class} (${(det.confidence * 100).toFixed(1)}%)`;
-          const textWidth = ctx.measureText(label).width;
-          const textHeight = 18;
-          ctx.fillRect(x1, y1 - textHeight, textWidth + 6, textHeight);
-
-          ctx.fillStyle = "#000";
-          ctx.fillText(label, x1 + 3, y1 - textHeight + 2);
-        });
+        table.style.display = "table";
       } catch (err) {
-        loader.style.display = "none";
-        alert("Error: " + err.message);
+        loader.classList.add("hidden");
+        fileInput.style.display = "block";
+        detectBtn.disabled = false;
+        showToast("Detection failed: " + err.message);
       }
     });
   </script>
+
 </body>
 </html>
