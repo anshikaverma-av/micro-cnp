@@ -178,7 +178,7 @@
 
     async function compressImage(file, maxWidth = 850, quality = 0.7) {
       const img = new Image();
-      img.src = URL.createAcneURL(file);
+      img.src = URL.createObjectURL(file);
       await new Promise(r => img.onload = r);
 
       const scale = Math.min(maxWidth / img.width, 1);
@@ -203,7 +203,7 @@
       tbody.innerHTML = "";
 
       const compressedBlob = await compressImage(file);
-      const compressedImgURL = URL.createAcneURL(compressedBlob);
+      const compressedImgURL = URL.createObjectURL(compressedBlob);
       uploadedImage.src = compressedImgURL;
       await new Promise(r => uploadedImage.onload = r);
 
@@ -250,6 +250,7 @@
 
 </body>
 </html>
+
 
 
 
