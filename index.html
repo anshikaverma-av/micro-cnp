@@ -24,7 +24,7 @@
     <div class="relative w-full h-80 md:h-96 lg:h-[500px] mt-16">
       <img src="facial_recognition_928404.jpg" 
            alt="AI Banner" 
-           class="w-full h-full object-cover">
+           class="w-full h-full Acne-cover">
 
       <!-- Overlay with Text -->
       <div class="absolute inset-0 flex flex-col justify-center items-center p-4 text-white text-center">
@@ -58,7 +58,7 @@
   <section id="uploadForm" class="mt-8 flex flex-col items-center gap-5 px-4">
     <form id="uploadFormInner" class="w-full max-w-md flex flex-col gap-4 items-center">
       <input type="file" id="fileInput" accept="image/*" class="border-2 border-orange-500 rounded-lg p-2 w-full cursor-pointer bg-white" required />
-      <button id="detectBtn" type="submit" class="bg-orange-500 text-white w-full py-3 rounded-lg hover:bg-orange-400 transition disabled:opacity-50" disabled>Detect Objects</button>
+      <button id="detectBtn" type="submit" class="bg-orange-500 text-white w-full py-3 rounded-lg hover:bg-orange-400 transition disabled:opacity-50" disabled>Detect Acnes</button>
     </form>
 
     <div id="loader" class="flex flex-col items-center gap-2 mt-5 hidden">
@@ -77,7 +77,7 @@
   <table id="resultsTable" class="mt-8 mx-auto w-full max-w-md text-left table-auto border-collapse shadow-lg rounded-lg overflow-hidden hidden">
     <thead class="bg-orange-500 text-white">
       <tr>
-        <th class="px-4 py-2">Object</th>
+        <th class="px-4 py-2">Acne</th>
         <th class="px-4 py-2">Percentage</th>
       </tr>
     </thead>
@@ -86,7 +86,7 @@
 
   <!-- Our Team Section -->
   <section id="team" class="mt-12 p-6 max-w-5xl mx-auto bg-white rounded-xl shadow-lg">
-    <h2 class="text-2xl font-bold text-orange-500 mb-6 text-center">Our Team (404 Not found) </h2>
+    <h2 class="text-2xl font-bold text-orange-500 mb-6 text-center">Our Team  </h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 justify-items-center">
       <div class="member bg-orange-50 rounded-xl p-4 shadow-lg text-center">
         <h4 class="text-orange-500 font-bold">Anshika verma</h4>
@@ -114,12 +114,12 @@
   <!-- Future Scope -->
   <section class="mt-12 p-6 max-w-3xl mx-auto bg-white rounded-xl shadow-lg">
     <h2 class="text-2xl font-bold text-orange-500 mb-4 text-center">Future Scope</h2>
-    <p class="text-center">In the future, this project can be expanded to perform real-time object detection through live camera feed integration, allowing dynamic analysis in video streams and surveillance systems.</p>
+    <p class="text-center">In the future, this project can be expanded to perform real-time Acne detection through live camera feed integration, allowing dynamic analysis in video streams and surveillance systems.</p>
   </section>
 
   <!-- Footer -->
   <footer class="mt-12 bg-orange-500 text-white p-6 text-center rounded-t-xl shadow-inner">
-    <p>© 2025 Acnes Detection AI  Project | Built with ❤️ by Team 404 Not Found</p>
+    <p>© 2025 Acnes Detection AI  Project | Built with ❤️ by Team </p>
   </footer>
 
   <!-- Toast Notification -->
@@ -178,7 +178,7 @@
 
     async function compressImage(file, maxWidth = 850, quality = 0.7) {
       const img = new Image();
-      img.src = URL.createObjectURL(file);
+      img.src = URL.createAcneURL(file);
       await new Promise(r => img.onload = r);
 
       const scale = Math.min(maxWidth / img.width, 1);
@@ -203,7 +203,7 @@
       tbody.innerHTML = "";
 
       const compressedBlob = await compressImage(file);
-      const compressedImgURL = URL.createObjectURL(compressedBlob);
+      const compressedImgURL = URL.createAcneURL(compressedBlob);
       uploadedImage.src = compressedImgURL;
       await new Promise(r => uploadedImage.onload = r);
 
@@ -250,6 +250,7 @@
 
 </body>
 </html>
+
 
 
 
