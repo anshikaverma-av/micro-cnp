@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Acne Detection AI </title>
+  <title> AI Object Detection</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-orange-50 text-gray-800 font-sans">
@@ -12,7 +12,7 @@
   <header class="relative w-full">
     <nav class="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-md shadow-md">
       <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-        <h1 class="text-xl font-bold text-orange-500">Acne Detection AI </h1>
+        <h1 class="text-xl font-bold text-orange-500">AI Object Detection </h1>
         <ul class="flex gap-6 font-semibold text-gray-700">
           <li><a href="#about" class="hover:text-orange-500 transition">About</a></li>
           <li><a href="#team" class="hover:text-orange-500 transition">Our Team </a></li>
@@ -29,8 +29,8 @@
       <!-- Overlay with Text -->
       <div class="absolute inset-0 flex flex-col justify-center items-center p-4 text-white text-center">
         <div class="bg-black/25 p-6 rounded-lg max-w-md">
-          <h1 class="text-3xl md:text-4xl font-bold mb-2">Acne Detection AI </h1>
-          <p class="text-lg md:text-xl mb-4">Upload an image — let AI detect Acne for you.</p>
+          <h1 class="text-3xl md:text-4xl font-bold mb-2">AI Object Detection </h1>
+          <p class="text-lg md:text-xl mb-4">Upload an image — let AI detect objects in an image for you.</p>
           <a href="#uploadForm" class="inline-block px-6 py-3 bg-white text-orange-500 font-semibold rounded-lg hover:bg-orange-100 transition">Get Started</a>
         </div>
       </div>
@@ -41,7 +41,7 @@
   <section id="about" class="max-w-3xl mx-auto mt-12 text-center px-4">
     <h2 class="text-2xl font-bold text-orange-500 mb-4">About</h2>
     <p class="text-lg text-gray-800">
-      This AI-powered web app can identify Acne using deep learning techniques. 
+      This AI-powered web app can identify objects in an image using deep learning techniques. 
       Upload your image and let the AI analyze it with precision and accuracy.
     </p>
   </section>
@@ -58,12 +58,12 @@
   <section id="uploadForm" class="mt-8 flex flex-col items-center gap-5 px-4">
     <form id="uploadFormInner" class="w-full max-w-md flex flex-col gap-4 items-center">
       <input type="file" id="fileInput" accept="image/*" class="border-2 border-orange-500 rounded-lg p-2 w-full cursor-pointer bg-white" required />
-      <button id="detectBtn" type="submit" class="bg-orange-500 text-white w-full py-3 rounded-lg hover:bg-orange-400 transition disabled:opacity-50" disabled>Detect Acne</button>
+      <button id="detectBtn" type="submit" class="bg-orange-500 text-white w-full py-3 rounded-lg hover:bg-orange-400 transition disabled:opacity-50" disabled>Detect object in an Image</button>
     </form>
 
     <div id="loader" class="flex flex-col items-center gap-2 mt-5 hidden">
       <div class="border-4 border-orange-200 border-t-orange-500 rounded-full w-12 h-12 animate-spin"></div>
-      <p class="text-orange-600 font-semibold">Detecting Acne ...</p>
+      <p class="text-orange-600 font-semibold">Detecting Objects ...</p>
     </div>
   </section>
 
@@ -77,7 +77,7 @@
   <table id="resultsTable" class="mt-8 mx-auto w-full max-w-md text-left table-auto border-collapse shadow-lg rounded-lg overflow-hidden hidden">
     <thead class="bg-orange-500 text-white">
       <tr>
-        <th class="px-4 py-2">Acne</th>
+        <th class="px-4 py-2">Objects </th>
         <th class="px-4 py-2">Percentage</th>
       </tr>
     </thead>
@@ -114,12 +114,12 @@
   <!-- Future Scope -->
   <section class="mt-12 p-6 max-w-3xl mx-auto bg-white rounded-xl shadow-lg">
     <h2 class="text-2xl font-bold text-orange-500 mb-4 text-center">Future Scope</h2>
-    <p class="text-center">In the future, this project can be expanded to perform real-time Acne detection through live camera feed integration, allowing dynamic analysis in video streams and surveillance systems.</p>
+    <p class="text-center">In the future, this project can be expanded to perform real-time object detection through live camera feed integration, allowing dynamic analysis in video streams and surveillance systems.</p>
   </section>
 
   <!-- Footer -->
   <footer class="mt-12 bg-orange-500 text-white p-6 text-center rounded-t-xl shadow-inner">
-    <p>© 2025 Acne Detection AI  Project | Built with ❤️ by Team </p>
+    <p>© 2025 AI Object Detection  Project | Built with ❤️ by Team </p>
   </footer>
 
   <!-- Toast Notification -->
@@ -250,6 +250,7 @@
 
 </body>
 </html>
+
 
 
 
